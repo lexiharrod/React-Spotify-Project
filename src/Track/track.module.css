@@ -1,0 +1,10 @@
+.track {
+    display: flex;
+    font-family: "Courier New", Courier, monospace;
+    border-bottom: solid #32a1ce;
+}
+
+.songInfo {
+    margin-right: 50px;
+}
+

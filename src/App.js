@@ -1,14 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import Track from './Track/track';
+import Tracklist from './Tracklist/tracklist';
+import SearchBar from './SearchBar/searchBar';
+import SearchResults from './SearchResults/searchResults';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <SearchBar />
+        <SearchResults />
+        <Track />
+        <Tracklist />
+        <Track />
+
         <a
           className="App-link"
           href="https://reactjs.org"
