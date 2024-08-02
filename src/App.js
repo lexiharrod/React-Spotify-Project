@@ -48,7 +48,7 @@ function App() {
         <SearchBar />
         <SearchResults />
         <Tracklist trackArray={trackArray} setPlaylistTracks={setPlaylistTracks} playlistTracks={playlistTracks}/>
-        <Playlist playlistInfo={playlistInfo} playlistName={playlistName} playlistTracks={playlistTracks} setPlaylistName={setPlaylistName} setPlaylistTracks={setPlaylistTracks} />
+        <Playlist playlistInfo={playlistInfo} playlistName={playlistName} playlistTracks={playlistTracks} setPlaylistName={setPlaylistName} setPlaylistTracks={setPlaylistTracks} trackArray={trackArray} />
 
         <a
           className="App-link"

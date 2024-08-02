@@ -3,7 +3,7 @@ import styles from './track.module.css';
 import Playlist from '../Playlist/playlist';
 
 
-function Track({ track, addTrack }) {
+function Track({ track, addTrack, showButton }) {
 
     function handleClick() {
         const newSong = {
@@ -15,6 +15,11 @@ function Track({ track, addTrack }) {
         addTrack(newSong);
     };
 
+    let buttonIcon = null;
+    if (showButton) {
+        buttonIcon = <button onClick={handleClick}>Plus</button>
+    }
+
     return (
             <div id='songInfo' className={styles.songInfo}>
                     <div className={styles.track}>
@@ -22,7 +27,7 @@ function Track({ track, addTrack }) {
                             <h3>Title: {track.name}</h3>
                             <p className={styles.p} >{track.artist} | {track.album}</p>
                         </div>
-                        <button onClick={handleClick}>Plus</button>
+                        {buttonIcon}
                     </div>
             </div>
     );
