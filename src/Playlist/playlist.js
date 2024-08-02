@@ -1,19 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Tracklist from '../Tracklist/tracklist';
 
-function Playlist({ playlistInfo }) {
-
-    const [playlistName, setPlaylistName] = useState('');
-    const [playlistTracks, setPlaylistTracks] = useState([]);
-
+function Playlist({ playlistInfo, playlistName, playlistTracks, setPlaylistTracks, setPlaylistName }) {
 
     useEffect(() => {
         setPlaylistName(playlistInfo.playlistLabel);;
       }, []); // Run effect only once on mount
 
-      useEffect(() => {
-        setPlaylistTracks(playlistInfo.playlistSongs);;
-      }, []); // Run effect only once on mount
+       //useEffect(() => {
+        //setPlaylistTracks(playlistInfo.playlistSongs);;
+      //}, []); // Run effect only once on mount
 
 
     return (

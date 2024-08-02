@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import './App.css';
 import Tracklist from './Tracklist/tracklist';
 import SearchBar from './SearchBar/searchBar';
@@ -38,13 +38,17 @@ const playlistInfo = {
   ]};
 
 function App() {
+
+  const [playlistName, setPlaylistName] = useState('');
+  const [playlistTracks, setPlaylistTracks] = useState([]); 
+
   return (
     <div className="App">
       <header className="App-header">
         <SearchBar />
         <SearchResults />
-        <Tracklist trackArray={trackArray} />
-        <Playlist playlistInfo={playlistInfo} />
+        <Tracklist trackArray={trackArray} setPlaylistTracks={setPlaylistTracks} playlistTracks={playlistTracks}/>
+        <Playlist playlistInfo={playlistInfo} playlistName={playlistName} playlistTracks={playlistTracks} setPlaylistName={setPlaylistName} setPlaylistTracks={setPlaylistTracks} />
 
         <a
           className="App-link"
