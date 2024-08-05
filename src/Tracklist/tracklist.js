@@ -15,7 +15,7 @@ function Tracklist({ trackArray, setPlaylistTracks, playlistTracks }) {
     return (
         <div>
             {trackArray.map((track) => (
-                <Track key={track.id} track={track} addTrack={addTrack} showButton={true}/>
+                <Track key={track.id} track={track} addTrack={addTrack} showPlusButton={true} showMinusButton={false} />
             )
             )}
             <button>Save to Spotify</button>

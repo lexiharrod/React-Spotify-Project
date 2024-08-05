@@ -3,7 +3,7 @@ import styles from './track.module.css';
 import Playlist from '../Playlist/playlist';
 
 
-function Track({ track, addTrack, showButton }) {
+function Track({ track, addTrack, showPlusButton, showMinusButton, removeTrack }) {
 
     function handleClick() {
         const newSong = {
@@ -15,9 +15,16 @@ function Track({ track, addTrack, showButton }) {
         addTrack(newSong);
     };
 
+    function handleRemove() {
+        removeTrack(track.id);
+    };
+
     let buttonIcon = null;
-    if (showButton) {
+    if (showPlusButton) {
         buttonIcon = <button onClick={handleClick}>Plus</button>
+    };
+    if (showMinusButton) {
+        buttonIcon = <button onClick={handleRemove}>Minus</button>
     }
 
     return (
