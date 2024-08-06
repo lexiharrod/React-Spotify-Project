@@ -10,7 +10,8 @@ function Track({ track, addTrack, showPlusButton, showMinusButton, removeTrack }
             id: track.id,
             name: track.name,
             artist: track.artist,
-            album: track.album
+            album: track.album,
+            uri: track.uri
         }
         addTrack(newSong);
     };

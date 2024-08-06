@@ -5,37 +5,43 @@ import SearchBar from './SearchBar/searchBar';
 import SearchResults from './SearchResults/searchResults';
 import Playlist from './Playlist/playlist';
 
+const spotifyEndpoint = "spotify:track:";
 const trackArray = [
   {
       name: "Getaway Car",
       artist: "Taylor Swift",
       album: "Reputation",
-      id: 1
+      id: 1,
+      uri: spotifyEndpoint + '0VE4kBnHJUgtMf0dy6DRmW'
   },
   {
       name: "August",
       artist: "Taylor Swift",
       album: "Folklore",
-      id: 2 
-  }
-]
+      id: 2,
+      uri: spotifyEndpoint + '3hUxzQpSfdDqwM3ZTFQY0K'
+  },
+  {
+    name: "Bejeweled",
+    artist: "Taylor Swift",
+    album: "Midnights",
+    id: 3,
+    uri: spotifyEndpoint + '3qoftcUZaUOncvIYjFSPdE'
+},
+{
+    name: "Clean",
+    artist: "Taylor Swift",
+    album: "1989",
+    id: 4,
+    uri: spotifyEndpoint + '2ByBBvpR9b7IynvRmnG7kG'
+}
+];
 
 const playlistInfo = {
   playlistLabel: 'Summer Vibes',
-  playlistSongs: [
-    {
-      name: "Bejeweled",
-      artist: "Taylor Swift",
-      album: "Midnights",
-      id: 1
-  },
-  {
-      name: "Clean",
-      artist: "Taylor Swift",
-      album: "1898",
-      id: 2 
-  }
-  ]};
+};
+
+
 
 function App() {
 
@@ -48,7 +54,7 @@ function App() {
         <SearchBar />
         <SearchResults />
         <Tracklist trackArray={trackArray} setPlaylistTracks={setPlaylistTracks} playlistTracks={playlistTracks}/>
-        <Playlist playlistInfo={playlistInfo} playlistName={playlistName} playlistTracks={playlistTracks} setPlaylistName={setPlaylistName} setPlaylistTracks={setPlaylistTracks} trackArray={trackArray} />
+        <Playlist playlistInfo={playlistInfo} playlistName={playlistName} playlistTracks={playlistTracks} setPlaylistName={setPlaylistName} setPlaylistTracks={setPlaylistTracks}  />
 
         <a
           className="App-link"
