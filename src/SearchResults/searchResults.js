@@ -1,26 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import Tracklist from '../Tracklist/tracklist';
 
-function SearchResults() {
+function SearchResults({results}) {
 
-    const [searchResults, setSearchResults] = useState([]);
-
-    const handleSearch = (query) => {
-        const results = [
-            {
-                name: "Getaway Car",
-                artist: "Taylor Swift",
-                album: "Reputation",
-                id: 1
-            },
-            {
-                name: "August",
-                artist: "Taylor Swift",
-                album: "Folklore",
-                id: 2 
-            }
-          ]
-        setSearchResults(results);
-    }
 
     return (
         <div>

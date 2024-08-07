@@ -1,7 +1,7 @@
 import React from "react";
 import Track from '../Track/track';
 
-function Tracklist({ trackArray, setPlaylistTracks, playlistTracks }) {
+function Tracklist({ searchResults, setPlaylistTracks, playlistTracks }) {
 
     function addTrack(addedTrack) {
 
@@ -14,7 +14,7 @@ function Tracklist({ trackArray, setPlaylistTracks, playlistTracks }) {
 
     return (
         <div>
-            {trackArray.map((track) => (
+            {searchResults.map((track) => (
                 <Track key={track.id} track={track} addTrack={addTrack} showPlusButton={true} showMinusButton={false} />
             )
             )}

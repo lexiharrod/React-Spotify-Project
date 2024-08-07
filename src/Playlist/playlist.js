@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from 'react';
 import Track from '../Track/track';
 
 function Playlist({ playlistInfo, playlistName, playlistTracks, setPlaylistTracks, setPlaylistName}) {

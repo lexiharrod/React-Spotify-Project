@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import './App.css';
 import Tracklist from './Tracklist/tracklist';
 import SearchBar from './SearchBar/searchBar';
 import SearchResults from './SearchResults/searchResults';
 import Playlist from './Playlist/playlist';
+import spotify from './util/spotify';
 
 const spotifyEndpoint = "spotify:track:";
 const trackArray = [
@@ -47,23 +48,20 @@ function App() {
 
   const [playlistName, setPlaylistName] = useState('');
   const [playlistTracks, setPlaylistTracks] = useState([]); 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+
+  const search = useCallback((term) =>
+  { spotify.search(term).then(setSearchResults)
+  }, [])
 
   return (
     <div className="App">
       <header className="App-header">
-        <SearchBar />
-        <SearchResults />
-        <Tracklist trackArray={trackArray} setPlaylistTracks={setPlaylistTracks} playlistTracks={playlistTracks}/>
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} search={search}/>
+        <SearchResults results={searchResults}/>
+        <Tracklist searchResults={searchResults} setPlaylistTracks={setPlaylistTracks} playlistTracks={playlistTracks} />
         <Playlist playlistInfo={playlistInfo} playlistName={playlistName} playlistTracks={playlistTracks} setPlaylistName={setPlaylistName} setPlaylistTracks={setPlaylistTracks}  />
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
