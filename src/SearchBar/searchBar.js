@@ -1,22 +1,25 @@
-function SearchBar({searchTerm, setSearchTerm, search}) {
+import React, { useState, useCallback } from "react";
 
-    function clearSearchBar() {
-        setSearchTerm('');
-    };
 
-    function handleSearchClick() {
-        search(searchTerm)
-        clearSearchBar();
-    }
+const SearchBar = (props) => {
+  const [term, setTerm] = useState("");
 
-    return (
-        <div>
-            <form>
-                <input type='text' value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
-                <button onClick={handleSearchClick}>Search</button>
-            </form>
-        </div>
-    );
-}
+  const handleTermChange = useCallback((event) => {
+    setTerm(event.target.value);
+  }, []);
+
+  const search = useCallback(() => {
+    props.onSearch(term);
+  }, [props.onSearch, term]);
+
+  return (
+    <div className="SearchBar">
+      <input placeholder="Enter A Song Title" onChange={handleTermChange} />
+      <button className="SearchButton" onClick={search}>
+        SEARCH
+      </button>
+    </div>
+  );
+};
 
 export default SearchBar;

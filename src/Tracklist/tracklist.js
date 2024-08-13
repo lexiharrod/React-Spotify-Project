@@ -1,26 +1,25 @@
 import React from "react";
-import Track from '../Track/track';
 
-function Tracklist({ searchResults, setPlaylistTracks, playlistTracks }) {
+import "./tracklist.module.css";
 
-    function addTrack(addedTrack) {
+import Track from "../Track/track";
 
-        const songExists = playlistTracks.some((track) => track.id === addedTrack.id);
-        if (!songExists) {
-        setPlaylistTracks((addedTracks) =>
-        [...addedTracks, addedTrack]);
-        }
-      };
+const TrackList = (props) => {
+  return (
+    <div className="TrackList">
+      {props.tracks.map((track) => {
+        return (
+          <Track
+            track={track}
+            key={track.id}
+            onAdd={props.onAdd}
+            isRemoval={props.isRemoval}
+            onRemove={props.onRemove}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
-    return (
-        <div>
-            {searchResults.map((track) => (
-                <Track key={track.id} track={track} addTrack={addTrack} showPlusButton={true} showMinusButton={false} />
-            )
-            )}
-            <button>Save to Spotify</button>
-        </div>
-    );
-}
-
-export default Tracklist;
+export default TrackList;

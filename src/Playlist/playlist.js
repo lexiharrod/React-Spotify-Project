@@ -1,47 +1,29 @@
-import React, { useEffect } from 'react';
-import Track from '../Track/track';
+import React, { useCallback } from "react";
 
-function Playlist({ playlistInfo, playlistName, playlistTracks, setPlaylistTracks, setPlaylistName}) {
 
-    function removeTrack(songIdToRemove) {
-        setPlaylistTracks((tracks) => 
-            tracks.filter((track) => track.id !== songIdToRemove)
-            );
-    }
-    
-    useEffect(() => {
-        setPlaylistName(playlistInfo.playlistLabel);;
-      }, []); // Run effect only once on mount
+import TrackList from "../Tracklist/tracklist";
 
-       //useEffect(() => {
-        //setPlaylistTracks(playlistInfo.playlistSongs);;
-      //}, []); // Run effect only once on mount
+const Playlist = (props) => {
+  const handleNameChange = useCallback(
+    (event) => {
+      props.onNameChange(event.target.value);
+    },
+    [props.onNameChange]
+  );
 
-    function clearPlaylist() {
-        setPlaylistTracks([]);
-    };
-
-    function savePlaylist() {
-        const uriArray = playlistTracks.map((track) => track.uri);
-        alert( uriArray);
-      };
-
-    function handleClick() {
-        savePlaylist();
-        clearPlaylist();
-    }
-
-    return (
-        <div>
-            <h2 id='playlist'>Playlist</h2>
-            <input id='playlistName' value={playlistName} defaultValue='New Playlist' onChange={(e) => setPlaylistName(e.target.value)} />
-            {playlistTracks.map((track) => (
-                <Track key={track.id} track={track} showPlusButton={false} showMinusButton={true} removeTrack={removeTrack} />
-            )
-            )}
-            <button onClick={handleClick}>Save to Spotify</button>
-        </div>
-    );
-}
+  return (
+    <div className="Playlist">
+      <input onChange={handleNameChange} defaultValue={"New Playlist"} />
+      <TrackList
+        tracks={props.playlistTracks}
+        isRemoval={true}
+        onRemove={props.onRemove}
+      />
+      <button className="Playlist-save" onClick={props.onSave}>
+        SAVE TO SPOTIFY
+      </button>
+    </div>
+  );
+};
 
 export default Playlist;
